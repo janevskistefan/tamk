@@ -1,0 +1,7 @@
+{
+  "name": "tamk-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
