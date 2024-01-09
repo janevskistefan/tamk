@@ -1,7 +1,7 @@
 -- TODO: Replace empty strings with actual links to images.
 -- TODO: Add more categories.
 
-INSERT INTO tamk.categories(name, logo_url)
+INSERT INTO tamk.categories(name, image_url)
 VALUES ('Processors', ''),
        ('Graphics Cards', ''),
        ('RAM', ''),
