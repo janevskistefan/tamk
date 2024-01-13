@@ -17,7 +17,7 @@ class Product(
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    val categoryId: Category,
+    val category: Category,
 
     @Column(name = "image_url")
     val imageUrl: String
