@@ -1,12 +1,38 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+/// <reference types="@angular/localize" />
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import {enableProdMode, importProvidersFrom} from '@angular/core';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {provideRouter, RouteReuseStrategy} from '@angular/router';
+import {IonicRouteStrategy, provideIonicAngular} from '@ionic/angular/standalone';
+
+import {routes} from './app/app.routes';
+import {AppComponent} from './app/app.component';
+import {environment} from './environments/environment';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    provideIonicAngular(),
+    provideRouter(routes),
+    importProvidersFrom(HttpClientModule),
+    importProvidersFrom(TranslateModule.forRoot({
+      defaultLanguage: 'mk',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })),
+  ],
+});
