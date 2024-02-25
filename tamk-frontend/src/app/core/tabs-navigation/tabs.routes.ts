@@ -9,17 +9,17 @@ export const routes: Routes = [
       {
         path: 'vendors',
         loadComponent: () =>
-          import('../features/pages/vendors-page/vendors-page').then((m) => m.VendorsPage),
+          import('../../features/pages/vendors-page/vendors-page').then((m) => m.VendorsPage),
       },
       {
         path: 'categories',
         loadComponent: () =>
-          import('../features/pages/categories-page/categories-page.component').then((m) => m.CategoriesPage),
+          import('../../features/pages/categories-page/categories-page.component').then((m) => m.CategoriesPage),
       },
       {
         path: 'search',
         loadComponent: () =>
-          import('../features/pages/search-page/search-page.component').then((m) => m.SearchPage),
+          import('../../features/pages/search-page/search-page.component').then((m) => m.SearchPage),
       },
       {
         path: '',
