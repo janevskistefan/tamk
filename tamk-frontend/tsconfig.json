@@ -4,6 +4,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@tamk-components/*": ["src/app/features/components/*"],
+      "@tamk-core/*": ["src/app/core/*"]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
