@@ -12,6 +12,9 @@ class Vendor(
     @Column(name = "name")
     val name: String,
 
+    @Column(name = "slogan")
+    val slogan: String,
+
     @Column(name = "logo_url")
     val logoUrl: String
 )

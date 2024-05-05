@@ -1,35 +1,34 @@
-CREATE TABLE categories
+create table categories
 (
-    id        SERIAL PRIMARY KEY,
-    name      VARCHAR(255) NOT NULL,
-    image_url TEXT         NOT NULL
+    id        serial primary key,
+    name      text not null,
+    image_url text not null default ''
 );
 
-CREATE TABLE vendors
+create table vendors
 (
-    id       SERIAL PRIMARY KEY,
-    name     VARCHAR(255) NOT NULL,
-    logo_url TEXT         NOT NULL
+    id       serial primary key,
+    name     text not null,
+    slogan   text,
+    logo_url text NOT NULL
 );
 
 
-CREATE TABLE products
+create table products
 (
-    id          SERIAL PRIMARY KEY,
-    name        TEXT NOT NULL,
-    description TEXT NOT NULL,
-    category_id INT  NOT NULL,
-    image_url   TEXT NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES categories (id)
+    id          serial primary key,
+    name        text not null,
+    description text,
+    category_id bigint references categories,
+    image_url   text not null default ''
 );
 
-CREATE TABLE stock
+create table stock
 (
-    id          SERIAL PRIMARY KEY,
-    product_id  INT  NOT NULL,
-    vendor_id   INT  NOT NULL,
-    price       INT  NOT NULL,
-    listing_url TEXT NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES products (id),
-    FOREIGN KEY (vendor_id) REFERENCES vendors (id)
+    id          serial primary key,
+    product_id  bigint references products,
+    vendor_id   bigint references vendors,
+    category_id bigint references categories,
+    price       bigint not null,
+    listing_url text   not null
 );

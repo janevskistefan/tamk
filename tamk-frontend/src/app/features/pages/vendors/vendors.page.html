@@ -1,28 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> {{ 'LABELS.VENDORS' | translate }} </ion-title>
+    <ion-title slot="start"> {{ 'LABELS.VENDORS' | translate }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ 'LABELS.VENDORS' | translate }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      @for(vendor of (vendors | async); track vendor.id) {
-      <ion-item>
-        <generic-list-item
-          [itemId]="vendor.id"
-          [itemLabel]="vendor.name"
-          [itemLogoUrl]="vendor.logoUrl"
-        >
-        </generic-list-item>
-      </ion-item>
-      }
-    </ion-list>
-  </ion-content>
+<ion-content>
+  <ion-list inset="true">
+    @for(vendor of (vendors | async); track vendor.id) {
+    <ion-item
+      [button]="true"
+      detail="true"
+      lines="full"
+      (click)="onVendorClick(vendor.id)">
+      <ion-label>
+        <h2>{{('LABELS.' + vendor.name) | translate}}</h2>
+        <p>{{('SLOGANS.' + vendor.name) | translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" [src]="vendor.logoUrl"></ion-icon>
+    </ion-item>
+    }
+  </ion-list>
 </ion-content>

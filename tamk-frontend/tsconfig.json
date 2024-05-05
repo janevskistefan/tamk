@@ -6,7 +6,8 @@
     "outDir": "./dist/out-tsc",
     "paths": {
       "@tamk-components/*": ["src/app/features/components/*"],
-      "@tamk-core/*": ["src/app/core/*"]
+      "@tamk-core/*": ["src/app/core/*"],
+      "@tamk-pages/*": ["src/app/features/pages/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

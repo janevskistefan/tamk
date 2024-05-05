@@ -2,6 +2,20 @@
   "LABELS": {
     "VENDORS": "Vendors",
     "CATEGORIES": "Categories",
-    "SEARCH": "Search"
+    "SEARCH": "Пребарај",
+    "Anhoch": "Anhoch",
+    "Setec": "Setec",
+    "Neptun": "Neptun",
+    "Galerija": "Galerija",
+    "Setra": "Setra",
+    "Tehnomarket": "Tehnomarket"
+  },
+  "SLOGANS": {
+    "Anhoch": "Your choice is our goal",
+    "Setec": "Everything from tech",
+    "Neptun": "Live better every day",
+    "Galerija": "The best of tech",
+    "Setra": "Technology Store",
+    "Tehnomarket": "Retail chain for appliances"
   }
 }

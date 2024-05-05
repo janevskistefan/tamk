@@ -27,7 +27,7 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     importProvidersFrom(TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: 'mk',
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,

@@ -1,8 +1,8 @@
--- TODO: Replace empty strings with actual links to images.
--- TODO: Add more categories.
+-- TODO: Refactor this - vendor level categories
+-- TODO: Replace with scraped data
 
-INSERT INTO tamk.categories(name, image_url)
-VALUES ('Processors', ''),
+insert into tamk.categories(name, image_url)
+values ('Processors', ''),
        ('Graphics Cards', ''),
        ('RAM', ''),
        ('Power Supplies', ''),
@@ -12,5 +12,4 @@ VALUES ('Processors', ''),
        ('Cables', ''),
        ('Monitors', ''),
        ('PC Peripherals', ''),
-       ('Audio', ''),
        ('Other', '');

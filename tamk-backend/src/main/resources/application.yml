@@ -1,9 +1,9 @@
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
-        password: ${TAMK_DB_PASS}
-        username: ${TAMK_DB_USER}
-        url: 'jdbc:postgresql://${TAMK_DB_HOST}/${TAMK_DB_NAME}'
+        password: admin
+        username: stefan
+        url: 'jdbc:postgresql://localhost:5432/tamk'
     flyway:
         locations: classpath:db-migration
         default-schema: 'tamk'

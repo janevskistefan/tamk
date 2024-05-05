@@ -1,5 +1,5 @@
-import {Routes} from '@angular/router';
-import {TabsNavigationPage} from './tabs-navigation-page.component';
+import { Routes } from '@angular/router';
+import { TabsNavigationPage } from './tabs-navigation-page.component';
 
 export const routes: Routes = [
   {
@@ -8,18 +8,43 @@ export const routes: Routes = [
     children: [
       {
         path: 'vendors',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('@tamk-pages/vendors/vendors.page').then(
+                (p) => p.VendorsPage
+              ),
+          },
+          {
+            path: ':vendorId',
+            loadComponent: () =>
+              import('@tamk-pages/single-vendor/single-vendor.page').then(
+                (p) => p.SingleVendorPage
+              ),
+          },
+        ],
+      },
+      {
+        path: 'vendors/:vendorId',
         loadComponent: () =>
-          import('../../features/pages/vendors/vendors.page').then((m) => m.VendorsPage),
+          import('@tamk-pages/single-vendor/single-vendor.page').then(
+            (p) => p.SingleVendorPage
+          ),
       },
       {
         path: 'categories',
         loadComponent: () =>
-          import('../../features/pages/categories/categories.page').then((m) => m.CategoriesPage),
+          import('../../features/pages/categories/categories.page').then(
+            (m) => m.CategoriesPage
+          ),
       },
       {
         path: 'search',
         loadComponent: () =>
-          import('../../features/pages/search/search.page').then((m) => m.SearchPage),
+          import('../../features/pages/search/search.page').then(
+            (m) => m.SearchPage
+          ),
       },
       {
         path: '',
@@ -30,7 +55,9 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/search',
+    // TODO: Redirect to 404 page
+    // TODO: Create 404 page
+    redirectTo: '/vendors',
     pathMatch: 'full',
   },
 ];

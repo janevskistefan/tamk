@@ -8,24 +8,30 @@ import {VendorListResponse} from "../../model/vendor-list-response";
 })
 export class ProductService {
 
-  path = "http://localhost:8080/api/vendors"
+  path = "http://localhost:8080/api"
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getVendors(pageNumber: number, size: number) {
+  getVendors(size: number) {
     return this.httpClient
-      .get(`${this.path}?pageNumber=${pageNumber}&size=${size}`)
+      .get(`${this.path}/vendors?pageNumber=1&size=${size}`)
       .pipe(
         map((response: any) => {
           return response.content.map((result: any) => {
             return {
               id: result.id,
               name: result.name,
+              slogan: result.slogan,
               logoUrl: result.logoUrl
             }
           }) as VendorListResponse[]
         })
       )
+  }
+
+  getAllCategoriesForVendor(vendorId: number, size: number) {
+    return this.httpClient
+    .get(`${this.path}/`)
   }
 }
