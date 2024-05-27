@@ -8,7 +8,18 @@
     "Neptun": "Нептун",
     "Galerija": "Галерија",
     "Setra": "Сетра",
-    "Tehnomarket": "Техномаркет"
+    "Tehnomarket": "Техномаркет",
+    "Processors": "Процесори",
+    "Graphics Cards": "Графички картици",
+    "RAM": "РАМ",
+    "Power Supplies": "Напојувања",
+    "Drives": "Хард Дискови / ССД",
+    "PC Cases": "Компјутерски куќишта",
+    "PCI Cards": "PCI Картички",
+    "Cables": "Кабли",
+    "Monitors": "Монитори",
+    "PC Peripherals": "Компјутерска периферија",
+    "Other": "Останато"
   },
   "SLOGANS": {
     "Anhoch": "Вашиот избор е наша цел",

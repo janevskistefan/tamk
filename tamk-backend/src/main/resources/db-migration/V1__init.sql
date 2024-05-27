@@ -32,3 +32,10 @@ create table stock
     price       bigint not null,
     listing_url text   not null
 );
+
+create table vendor_category
+(
+    id          serial primary key,
+    vendor_id   bigint references vendors,
+    category_id bigint references categories
+)

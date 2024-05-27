@@ -3,6 +3,7 @@ package com.stefanjanevski.tamkbackend.controller
 import com.stefanjanevski.tamkbackend.model.Category
 import com.stefanjanevski.tamkbackend.model.Product
 import com.stefanjanevski.tamkbackend.model.Vendor
+import com.stefanjanevski.tamkbackend.model.VendorCategory
 import com.stefanjanevski.tamkbackend.services.ProductService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
@@ -71,5 +72,9 @@ class Controller(
 
     @GetMapping("{productId}")
     fun getProductById(@PathVariable productId: Long): Product = productService.getProductById(productId)
+
+    @GetMapping("/filter-categories-by-vendor/{vendorId}")
+    fun getAvailableCategoriesForVendor(@PathVariable vendorId: Long): List<VendorCategory> =
+        productService.getAvailableCategoriesForVendor(vendorId)
 
 }

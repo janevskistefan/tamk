@@ -26,13 +26,6 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'vendors/:vendorId',
-        loadComponent: () =>
-          import('@tamk-pages/single-vendor/single-vendor.page').then(
-            (p) => p.SingleVendorPage
-          ),
-      },
-      {
         path: 'categories',
         loadComponent: () =>
           import('../../features/pages/categories/categories.page').then(

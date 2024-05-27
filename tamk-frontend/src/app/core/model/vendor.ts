@@ -1,4 +1,4 @@
-export type VendorListResponse = {
+export type Vendor = {
   id: number;
   name: string;
   slogan: string;

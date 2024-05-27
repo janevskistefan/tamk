@@ -15,8 +15,8 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '@tamk-core/api/product-service/product.service';
-import { VendorListResponse } from '@tamk-core/model/vendor-list-response';
+import { ProductService } from '@tamk-core/api/service/product.service';
+import { Vendor } from '@tamk-core/model/vendor';
 import { Subject } from 'rxjs';
 
 const modules = [TranslateModule, CommonModule, RouterModule];
@@ -42,12 +42,12 @@ const standaloneComponents = [
   imports: [...modules, ...standaloneComponents],
 })
 export class VendorsPage implements OnInit {
-  protected vendors = new Subject<VendorListResponse[]>();
+  protected vendors = new Subject<Vendor[]>();
 
   constructor(private vendorService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.vendorService.getVendors(0, 10).subscribe({
+    this.vendorService.getVendors(10).subscribe({
       next: (vendorResponseList) => this.vendors.next(vendorResponseList),
     });
   }

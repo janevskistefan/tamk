@@ -8,7 +8,18 @@
     "Neptun": "Neptun",
     "Galerija": "Galerija",
     "Setra": "Setra",
-    "Tehnomarket": "Tehnomarket"
+    "Tehnomarket": "Tehnomarket",
+    "Processors": "Processors",
+    "Graphic Cards": "Graphic Cards",
+    "RAM": "RAM",
+    "Power Supplies": "Power Supplies",
+    "Drives": "HDD/SSD",
+    "PC Cases": "PC Cases",
+    "PCI Cards": "PCI Cards",
+    "Cables": "Cables",
+    "Monitors": "Monitors",
+    "PC Peripherals": "PC Peripherals",
+    "Other": "Other"
   },
   "SLOGANS": {
     "Anhoch": "Your choice is our goal",
