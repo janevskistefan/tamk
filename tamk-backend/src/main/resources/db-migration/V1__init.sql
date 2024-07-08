@@ -28,14 +28,6 @@ create table stock
     id          serial primary key,
     product_id  bigint references products,
     vendor_id   bigint references vendors,
-    category_id bigint references categories,
     price       bigint not null,
     listing_url text   not null
 );
-
-create table vendor_category
-(
-    id          serial primary key,
-    vendor_id   bigint references vendors,
-    category_id bigint references categories
-)
