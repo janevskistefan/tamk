@@ -16,14 +16,14 @@ class StockController(
     fun findAllAvailableProducts(
         @RequestParam vendorId: Long?,
         @RequestParam categoryId: Long?,
-        @RequestParam productName: String?,
+        @RequestParam searchQuery: String?,
         @RequestParam(defaultValue = "0") pageNumber: Int,
         @RequestParam(defaultValue = "5") pageSize: Int,
     ): Page<Product> = stockRepository
         .findAllAvailableProducts(
             vendorId = vendorId,
             categoryId = categoryId,
-            productName = productName,
+            productName = searchQuery ?: "",
             pageable = PageRequest.of(pageNumber, pageSize)
         )
 }

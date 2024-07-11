@@ -12,17 +12,17 @@ import org.springframework.stereotype.Repository
 @Repository
 interface StockRepository : PagingAndSortingRepository<Stock, Long> {
     @Query(
-        """
-        SELECT p FROM Stock s JOIN s.product p WHERE
+        """SELECT p FROM Stock s JOIN s.product p WHERE
         (:vendorId IS NULL OR s.vendor.id = :vendorId) AND 
         (:categoryId IS NULL OR p.category.id = :categoryId) AND
-        (:productName IS NULL OR p.name LIKE ('%' || :productName || '%'))
-    """
+        (:productName IS NULL OR LOWER(p.name) LIKE  
+        CONCAT('%', LOWER(:productName), '%'))
+        """
     )
     fun findAllAvailableProducts(
         @Param("vendorId") vendorId: Long?,
         @Param("categoryId") categoryId: Long?,
-        @Param("productName") productName: String?,
+        @Param("productName") productName: String,
         pageable: Pageable
     ): Page<Product>
 }
