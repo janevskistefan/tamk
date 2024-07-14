@@ -96,7 +96,7 @@ Intel® Virtualization Technology (VT-x) : Yes
 Intel® Virtualization Technology for Directed I/O (VT-d) : Yes
 Intel® VT-x with Extended Page Tables (EPT) : Yes
 ', (select id from tamk.categories where name = 'Processors'),
-        'https://www.anhoch.com/storage/media/i914900kbox.jpg'),
+        ''),
        ('Intel Core i9-13900K', 'Essentials
 Product Collection:13th Generation Intel® Core™ i9 Processors
 Code Name:Products formerly Raptor Lake
@@ -198,7 +198,7 @@ Intel® VT-x with Extended Page Tables (EPT): Yes', (select id
                                                     from tamk
                                                              .categories
                                                     where name = 'Processors'),
-        'https://www.anhoch.com/storage/media/i913900kbox.jpg'),
+        ''),
        ('Intel Core i7-14700K', 'Essentials
 Product Collection: Intel® Core™ i7 Processors (14th gen)
 Code Name: Products formerly RAPTOR LAKE
@@ -295,7 +295,7 @@ Intel® VT-x with Extended Page Tables (EPT) : Yes', (select id
                                                      from tamk
                                                               .categories
                                                      where name = 'Processors'),
-        'https://www.anhoch.com/storage/media/i714700kbox.jpg');
+        '');
 
 insert into tamk.stock(product_id, vendor_id, price, listing_url)
 values ((select id from tamk.products where name = 'Intel Core i9-14900K'),

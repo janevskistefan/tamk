@@ -2,7 +2,7 @@
   "LABELS": {
     "VENDORS": "Vendors",
     "CATEGORIES": "Categories",
-    "SEARCH": "Пребарај",
+    "SEARCH": "Search",
     "Anhoch": "Anhoch",
     "Setec": "Setec",
     "Neptun": "Neptun",
@@ -10,7 +10,7 @@
     "Setra": "Setra",
     "Tehnomarket": "Tehnomarket",
     "Processors": "Processors",
-    "Graphic Cards": "Graphic Cards",
+    "Graphics Cards": "Graphic Cards",
     "RAM": "RAM",
     "Power Supplies": "Power Supplies",
     "Drives": "HDD/SSD",

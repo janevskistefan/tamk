@@ -1,16 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    @if (vendorId) {
+      <ion-icon name="arrow-back-sharp"></ion-icon>
+    }
     <ion-title>
       {{ 'LABELS.CATEGORIES' | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ 'LABELS.VENDORS' | translate }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content>
+  <ion-list inset="true">
+    @for (category of (categories | async); track category.id) {
+      <ion-item
+        [button]="true"
+        detail="true"
+        (click)="onCategoryClick(category.id)"
+        lines="full">
+        <ion-label>
+          <h2>{{ ('LABELS.' + category.name) | translate }}</h2>
+        </ion-label>
+        <ion-icon slot="end" [src]="category.imageUrl"></ion-icon>
+      </ion-item>
+    }
+  </ion-list>
 </ion-content>

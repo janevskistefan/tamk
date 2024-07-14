@@ -1,3 +1,8 @@
-<p>
-  single-product.page works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start" autoHide="false"></ion-back-button>
+    <ion-title>
+      {{ product?.name }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

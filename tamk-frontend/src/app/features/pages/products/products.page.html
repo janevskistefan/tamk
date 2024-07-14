@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    @if (vendorId) {
+      <ion-back-button slot="start" defaultHref="#" autoHide="false"></ion-back-button>
+    }
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="padding: 10px">
+    @if (vendorId) {
+      <h3> Showing products for single category for single vendor</h3>
+    } @else {
+      <h3> Showing products for single category </h3>
+    }
+  </div>
+</ion-content>
+
+<ion-content>
+  <ion-list inset="true">
+    @for(product of (products | async); track product.id) {
+      <ion-item
+        [button]="true"
+        detail="true"
+        (click)="onSingleProductClick(product.id)"
+        lines="full">
+        <ion-label>
+          <h2>{{ product.name }}</h2>
+        </ion-label>
+        <ion-icon slot="end" [src]="product.imageUrl"></ion-icon>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>

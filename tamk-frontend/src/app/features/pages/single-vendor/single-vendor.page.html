@@ -6,18 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list inset="true">
-    @for(vendorCategory of (vendorCategories | async); track vendorCategory.id) {
-    <ion-item
-      [button]="true"
-      detail="true"
-      lines="full">
-      <ion-label>
-        <h2>{{('LABELS.' + vendorCategory.category.name) | translate}}</h2>
-      </ion-label>
-      <ion-icon slot="end" [src]="vendorCategory.category.imageUrl"></ion-icon>
-    </ion-item>
-    }
-  </ion-list>
-</ion-content>
+<!--<ion-content>-->
+<!--  <ion-list inset="true">-->
+<!--    @for(vendorCategory of (vendorCategories | async); track vendorCategory.id) {-->
+<!--    <ion-item-->
+<!--      [button]="true"-->
+<!--      detail="true"-->
+<!--      lines="full">-->
+<!--      <ion-label>-->
+<!--        <h2>{{('LABELS.' + vendorCategory.category.name) | translate}}</h2>-->
+<!--      </ion-label>-->
+<!--      <ion-icon slot="end" [src]="vendorCategory.category.imageUrl"></ion-icon>-->
+<!--    </ion-item>-->
+<!--    }-->
+<!--  </ion-list>-->
+<!--</ion-content>-->

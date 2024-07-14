@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {Component, inject, OnInit, ViewChild} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {
   IonButtons,
   IonContent,
@@ -14,10 +14,12 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '@tamk-core/api/service/product.service';
-import { Vendor } from '@tamk-core/model/vendor';
-import { Subject } from 'rxjs';
+import {TranslateModule} from '@ngx-translate/core';
+import {Vendor} from '@tamk-core/model/vendor';
+import {Observable} from 'rxjs';
+import {VendorService} from "@tamk-core/api/service/vendor.service";
+import {RoutingHelperService} from "@tamk-core/api/service/helpers/routing-helper.service";
+import {AppHeaderComponent} from "@tamk-common/components/app-header/app-header.component";
 
 const modules = [TranslateModule, CommonModule, RouterModule];
 
@@ -37,22 +39,25 @@ const standaloneComponents = [
 
 @Component({
   templateUrl: 'vendors.page.html',
-  styleUrl: 'vendors.page.scss',
   standalone: true,
-  imports: [...modules, ...standaloneComponents],
+  imports: [...modules, ...standaloneComponents, AppHeaderComponent],
 })
 export class VendorsPage implements OnInit {
-  protected vendors = new Subject<Vendor[]>();
 
-  constructor(private vendorService: ProductService, private router: Router) {}
+  @ViewChild(AppHeaderComponent) header!: AppHeaderComponent;
+
+  protected vendors = new Observable<Vendor[]>()
+
+  #vendorService = inject(VendorService)
+  #routingService = inject(RoutingHelperService)
 
   ngOnInit(): void {
-    this.vendorService.getVendors(10).subscribe({
-      next: (vendorResponseList) => this.vendors.next(vendorResponseList),
-    });
+    this.vendors = this.#vendorService.getAllVendors()
   }
 
   protected onVendorClick(vendorId: number) {
-    this.router.navigateByUrl(`/vendors/${vendorId}`);
+    this.#routingService
+      .navigateToCategoriesForVendor(vendorId)
+      .then()
   }
 }

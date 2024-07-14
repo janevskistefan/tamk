@@ -1,0 +1,9 @@
+<ion-toolbar>
+  @if (breadcrumbs.length > 1) {
+    <ion-breadcrumbs>
+
+    </ion-breadcrumbs>
+  } @else {
+    <ion-title>{{ breadcrumbs[0].label }}</ion-title>
+  }
+</ion-toolbar>

@@ -1,5 +1,5 @@
-import { Routes } from '@angular/router';
-import { TabsNavigationPage } from './tabs-navigation-page.component';
+import {Routes} from '@angular/router';
+import {TabsNavigationPage} from './tabs-navigation-page.component';
 
 export const routes: Routes = [
   {
@@ -11,33 +11,70 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () =>
-              import('@tamk-pages/vendors/vendors.page').then(
-                (p) => p.VendorsPage
-              ),
+            loadComponent: () => import('@tamk-pages/vendors/vendors.page').then(p => p.VendorsPage)
           },
           {
             path: ':vendorId',
-            loadComponent: () =>
-              import('@tamk-pages/single-vendor/single-vendor.page').then(
-                (p) => p.SingleVendorPage
-              ),
+            children: [
+              {
+                path: '',
+                loadComponent: () => import('@tamk-pages/single-vendor/single-vendor.page').then(p => p.SingleVendorPage)
+              },
+              {
+                path: 'categories',
+                children: [
+                  {
+                    path: '',
+                    loadComponent: () => import('@tamk-pages/categories/categories.page').then(p => p.CategoriesPage)
+                  },
+                  {
+                    path: ':categoryId',
+                    loadComponent: () => import('@tamk-pages/products/products.page').then(p => p.ProductsPage)
+                  }
+                ]
+              },
+              {
+                path: 'products',
+                children: [
+                  {
+                    path: ':productId',
+                    loadComponent: () => import('@tamk-pages/single-product/single-product.page')
+                      .then(p => p.SingleProductPage)
+                  }
+                ]
+              },
+            ]
           },
-        ],
+        ]
       },
       {
         path: 'categories',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('@tamk-pages/categories/categories.page')
+                .then(p => p.CategoriesPage)
+          },
+          {
+            path: ':categoryId',
+            loadComponent: () =>
+              import('@tamk-pages/products/products.page')
+                .then(p => p.ProductsPage)
+          }
+        ]
+      },
+      {
+        path: 'products/:productId',
         loadComponent: () =>
-          import('../../features/pages/categories/categories.page').then(
-            (m) => m.CategoriesPage
-          ),
+          import('@tamk-pages/single-product/single-product.page')
+            .then(p => p.SingleProductPage)
       },
       {
         path: 'search',
         loadComponent: () =>
-          import('../../features/pages/search/search.page').then(
-            (m) => m.SearchPage
-          ),
+          import('@tamk-pages/search/search.page')
+            .then(p => p.SearchPage),
       },
       {
         path: '',
@@ -48,8 +85,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    // TODO: Redirect to 404 page
-    // TODO: Create 404 page
     redirectTo: '/vendors',
     pathMatch: 'full',
   },
